@@ -44,6 +44,9 @@ export const ACCESS_LINK =
   process.env.NEXT_PUBLIC_ACCESS_LINK ??
   'https://trk.of-traffic.com/go/01KW9BHKKESX6F9STJGD5B4NJX'
 
+export const META_PIXEL_ID =
+  process.env.NEXT_PUBLIC_META_PIXEL_ID ?? '1505895597887530'
+
 export const SITE_NAV = [
   { href: '/#moments', label: 'Preview' },
   { href: '/#about', label: 'About' },

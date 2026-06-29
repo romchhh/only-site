@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { montserrat } from './fonts'
+import MetaPixel from './components/MetaPixel'
 import { rootMetadata } from './seo'
 import './globals.css'
 import './site.css'
@@ -16,7 +17,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={montserrat.variable}>
-      <body className={montserrat.className}>{children}</body>
+      <body className={montserrat.className}>
+        <MetaPixel />
+        {children}
+      </body>
     </html>
   )
 }
