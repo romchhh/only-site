@@ -7,7 +7,7 @@ export const HERO_COPY = {
   badge: 'Online now',
   headline: ['This isn\u2019t the cosplay', 'you see on con day.'],
   subhead: ['Behind the builds, the roleplay, the chaos.', 'For free.'],
-  cta: 'Claim Free Access',
+  cta: 'Claim Free Access', 
   disclaimer: 'Free trial \u00b7 No card required \u00b7 Cancel anytime',
 } as const
 
