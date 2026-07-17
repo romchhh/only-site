@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { CREATOR_NAME, MOMENT_VIDEOS } from '../content/videos'
 import PaymentButton from './PaymentButton'
 import styles from './RecentMoments.module.css'
@@ -36,82 +36,61 @@ function VerifiedIcon() {
 
 type MomentCardProps = {
   src: string
+  poster: string
   caption: string
   locked: boolean
 }
 
-function LockedVideoPreview({ src }: { src: string }) {
-  const [posterUrl, setPosterUrl] = useState<string | null>(null)
+/** Loads the video file only after the card enters (or nears) the viewport. */
+function LazyPreviewVideo({ src, poster }: { src: string; poster: string }) {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [shouldPlay, setShouldPlay] = useState(false)
 
   useEffect(() => {
-    let cancelled = false
-    const video = document.createElement('video')
-    video.muted = true
-    video.playsInline = true
-    video.preload = 'auto'
-    video.src = src
+    const el = containerRef.current
+    if (!el) return
 
-    const captureFrame = () => {
-      if (!video.videoWidth || !video.videoHeight) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldPlay(true)
+          observer.disconnect()
+        }
+      },
+      { rootMargin: '120px 0px', threshold: 0.15 }
+    )
 
-      const canvas = document.createElement('canvas')
-      canvas.width = video.videoWidth
-      canvas.height = video.videoHeight
-      const context = canvas.getContext('2d')
-      if (!context) return
-
-      context.drawImage(video, 0, 0, canvas.width, canvas.height)
-      if (!cancelled) {
-        setPosterUrl(canvas.toDataURL('image/jpeg', 0.84))
-      }
-    }
-
-    const onLoadedData = () => {
-      video.currentTime = 0.1
-    }
-
-    const onSeeked = () => {
-      captureFrame()
-    }
-
-    video.addEventListener('loadeddata', onLoadedData)
-    video.addEventListener('seeked', onSeeked)
-    video.load()
-
-    return () => {
-      cancelled = true
-      video.removeEventListener('loadeddata', onLoadedData)
-      video.removeEventListener('seeked', onSeeked)
-      video.src = ''
-    }
-  }, [src])
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   return (
-    <>
-      {posterUrl ? (
-        <img src={posterUrl} alt="" className={styles.previewImage} />
-      ) : (
-        <div className={styles.previewPlaceholder} aria-hidden="true" />
-      )}
-    </>
-  )
-}
-
-function MomentCard({ src, caption, locked }: MomentCardProps) {
-  const media = (
-    <div className={styles.media}>
-      {locked ? (
-        <LockedVideoPreview src={src} />
-      ) : (
+    <div ref={containerRef} className={styles.mediaFill}>
+      {shouldPlay ? (
         <video
           className={styles.video}
           src={src}
+          poster={poster}
           muted
           loop
           playsInline
           autoPlay
-          preload="metadata"
+          preload="none"
         />
+      ) : (
+        <img src={poster} alt="" className={styles.previewImage} decoding="async" />
+      )}
+    </div>
+  )
+}
+
+function MomentCard({ src, poster, caption, locked }: MomentCardProps) {
+  const media = (
+    <div className={styles.media}>
+      {locked ? (
+        <img src={poster} alt="" className={styles.previewImage} decoding="async" />
+      ) : (
+        <LazyPreviewVideo src={src} poster={poster} />
       )}
       {locked && (
         <div className={styles.lockOverlay}>
@@ -161,6 +140,7 @@ export default function RecentMoments() {
             <MomentCard
               key={video.id}
               src={video.src}
+              poster={video.poster}
               caption={video.caption}
               locked={video.locked}
             />
