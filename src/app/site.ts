@@ -2,7 +2,7 @@ import { CREATOR_NAME } from './content/creator'
 
 export const SITE_NAME = CREATOR_NAME
 export const SITE_SHORT_NAME = CREATOR_NAME
-export const SITE_HERO_IMAGE = '/content/hero/portrait.jpg'
+export const SITE_HERO_IMAGE = '/content/hero/photo_2026-07-28_17-18-15.jpg'
 
 function normalizeSiteUrl(url: string): string {
   const trimmed = url.trim().replace(/\/$/, '')
@@ -42,7 +42,7 @@ export const SITE_THEME_COLOR = '#00AFF0'
 
 export const ACCESS_LINK =
   process.env.NEXT_PUBLIC_ACCESS_LINK ??
-  'https://trk.of-traffic.com/go/01KW9BHKKESX6F9STJGD5B4NJX'
+  'https://trk.of-traffic.com/go/01KZRFXXSZSGE9TFFKVFSJE7CV'
 
 export const META_PIXEL_ID =
   process.env.NEXT_PUBLIC_META_PIXEL_ID ?? '1505895597887530'
@@ -67,5 +67,5 @@ export const SITE_FAQ = [
     a: 'Yes. I love geek talk as much as flirting — I read everything and reply personally.',
   },
   { q: 'Can I cancel anytime?', a: 'Yes. You\'re free to leave whenever you want.' },
-  { q: 'How do I get access?', a: 'Tap Get Access, create an account, and step inside.' },
+  { q: 'How do I get access?', a: 'Tap Get a gift, create an account, and step inside.' },
 ] as const

@@ -43,7 +43,7 @@ export default function Hero() {
           </div>
 
           <div className={styles.ctaBlock}>
-            <PaymentButton className={`${styles.ctaButton} gradientCta`} aria-label="Claim free access">
+            <PaymentButton className={`${styles.ctaButton} gradientCta`} aria-label="Get a gift">
               <span className={styles.ctaArrow} aria-hidden="true">→</span>
               {HERO_COPY.cta}
             </PaymentButton>

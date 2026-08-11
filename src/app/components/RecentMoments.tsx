@@ -147,9 +147,9 @@ export default function RecentMoments() {
           ))}
         </div>
 
-        <PaymentButton className={`${styles.cta} gradientCta`} aria-label="Get free access">
+        <PaymentButton className={`${styles.cta} gradientCta`} aria-label="Get a gift">
           <span className={styles.ctaArrow} aria-hidden="true">→</span>
-          Get Free Access
+          Get a gift
         </PaymentButton>
       </div>
     </section>

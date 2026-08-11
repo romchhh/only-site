@@ -53,9 +53,9 @@ export default function FloatingCta() {
 
   return (
     <div className={`${styles.bar} ${visible ? styles.visible : ''}`}>
-      <PaymentButton className={`${styles.button} gradientCta`} aria-label="Get access" disabled={!visible}>
+      <PaymentButton className={`${styles.button} gradientCta`} aria-label="Get a gift" disabled={!visible}>
         <span className={styles.arrow} aria-hidden="true">→</span>
-        Get Access
+        Get a gift
       </PaymentButton>
     </div>
   )

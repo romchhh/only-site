@@ -32,7 +32,7 @@ export default function JoinStepsSection() {
           <p className={styles.closingQuestion}>{JOIN_CLOSING.question}</p>
         </div>
 
-        <PaymentButton className={`${styles.cta} gradientCta`} aria-label="Yes, let me in">
+        <PaymentButton className={`${styles.cta} gradientCta`} aria-label="Get a gift">
           <span className={styles.ctaArrow} aria-hidden="true">→</span>
           {JOIN_CLOSING.cta}
         </PaymentButton>

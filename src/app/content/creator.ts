@@ -5,9 +5,9 @@ export const CREATOR_TAGLINE = 'Sexy cosplay creator from the geek world'
 
 export const HERO_COPY = {
   badge: 'Online now',
-  headline: ['This isn\u2019t the cosplay', 'you see on con day.'],
+  headline: ['Get a free video from', 'the Cosplay Queen'],
   subhead: ['Behind the builds, the roleplay, the chaos.', 'For free.'],
-  cta: 'Claim Free Access', 
+  cta: 'Get a gift',
   disclaimer: 'Free trial \u00b7 No card required \u00b7 Cancel anytime',
 } as const
 
@@ -66,6 +66,6 @@ export const JOIN_CLOSING = {
   lead: 'I don\u2019t let everyone into the inner fandom.',
   highlight: ['Just the ones who', 'actually get it.'],
   question: 'Are you one of us?',
-  cta: 'Yes. Let Me In.',
+  cta: 'Get a gift',
   disclaimer: 'Free access. Limited spots.',
 } as const
