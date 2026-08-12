@@ -5,8 +5,12 @@ export const CREATOR_TAGLINE = 'Sexy cosplay creator from the geek world'
 
 export const HERO_COPY = {
   badge: 'Online now',
-  headline: ['Get a free video from', 'the Cosplay Queen'],
-  subhead: ['Behind the builds, the roleplay, the chaos.', 'For free.'],
+  headline: {
+    lead: 'Get a',
+    accent: 'free',
+    rest: 'video from',
+    closer: 'the Cosplay Queen',
+  },
   cta: 'Get a gift',
   disclaimer: 'Free trial \u00b7 No card required \u00b7 Cancel anytime',
 } as const

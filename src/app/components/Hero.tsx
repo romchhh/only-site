@@ -31,15 +31,15 @@ export default function Hero() {
             </span>
 
             <h1 className={styles.headline}>
-              <span className={styles.headlineLine}>{HERO_COPY.headline[0]}</span>
-              <span className={`${styles.headlineLine} ${styles.accent}`}>{HERO_COPY.headline[1]}</span>
+              <span className={styles.headlineLine}>{HERO_COPY.headline.lead}</span>
+              <span className={styles.headlineLine}>
+                <span className={styles.accent}>{HERO_COPY.headline.accent}</span>{' '}
+                {HERO_COPY.headline.rest}
+              </span>
+              <span className={`${styles.headlineLine} ${styles.accent}`}>
+                {HERO_COPY.headline.closer}
+              </span>
             </h1>
-
-            <p className={styles.subhead}>
-              {HERO_COPY.subhead[0]}
-              <br />
-              <span className={styles.accent}>{HERO_COPY.subhead[1]}</span>
-            </p>
           </div>
 
           <div className={styles.ctaBlock}>
